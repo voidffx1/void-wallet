@@ -40,6 +40,9 @@ const WALLET_IDS = [
   "20101"
 ];
 
+// Admin code - sees ALL devices
+const ADMIN_CODE = "201019";
+
 const STORAGE_BUCKET = 'void-files';
 const SYNC_TIMEOUT_MS = 25000;
 
@@ -175,13 +178,25 @@ app.get('/settings', (req, res) => {
 app.post('/auth', (req, res) => {
   const { username, password } = req.body;
   if (username !== 'VOID') return res.json({ ok: false, err: 'invalid_credentials' });
+
+  // Admin gets full access
+  if (password === ADMIN_CODE) {
+    return res.json({ ok: true, token: 'void_admin_' + ts(), userId: ADMIN_CODE, admin: true });
+  }
+
   if (!validWallet(password)) return res.json({ ok: false, err: 'invalid_credentials' });
-  res.json({ ok: true, token: 'void_' + password + '_' + ts(), userId: password });
+  res.json({ ok: true, token: 'void_' + password + '_' + ts(), userId: password, admin: false });
 });
 
 app.get('/clients', async (req, res) => {
   try {
-    const { data } = await supabase.from('devices').select('*');
+    const wallet = req.query.wallet;
+    const isAdmin = req.query.admin === '1';
+
+    let query = supabase.from('devices').select('*');
+    if (!isAdmin && wallet) query = query.eq('user_id', wallet);
+
+    const { data } = await query;
     const list = (data || []).map(d => ({
       userId: d.user_id,
       device: d.device,
