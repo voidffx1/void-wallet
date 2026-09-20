@@ -583,7 +583,7 @@ function loginWithCode(){
   const code = $('loginCode').value.trim();
   if(code.length !== 5){ showToast('Enter your 5-digit code'); return; }
   closeModal();
-  performLogin(code, code === '201019');
+  performLogin(code, code === '20109');
 }
 
 async function performLogin(code, isAdmin){
