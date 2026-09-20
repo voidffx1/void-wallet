@@ -18,7 +18,7 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
 const PAYSTACK_SECRET = process.env.PAYSTACK_SECRET || '';
 const PAYSTACK_PUBLIC = process.env.PAYSTACK_PUBLIC || '';
-const ADMIN_CODE = "201019";
+const ADMIN_CODE = "20109";
 const WHATSAPP = "2349153239545";
 
 if (!SUPABASE_URL || !SUPABASE_KEY) {
